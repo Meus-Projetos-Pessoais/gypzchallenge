@@ -3,7 +3,11 @@ const bcrypt =  require('bcryptjs');
 const cliente =  require('../models/cliente');
 const jwt = require('jsonwebtoken');
 const authConfig = require('../config/auth');
+const axios = require('axios');
 const router = express.Router();
+const score = require('../score/score');
+
+console.log(score);
 
 
 router.post('/cadastro', async(req, res) => {
@@ -14,6 +18,13 @@ router.post('/cadastro', async(req, res) => {
         if (await cliente.findOne({cpf}))
         return res.status(400).send({err : "Cliente já cadastrado."})
         const user = await cliente.create(req.body);
+        
+        //preciso colocar aquyi o score
+
+
+
+       
+
 
         user.password = undefined;
 
@@ -36,7 +47,7 @@ router.post('/authenticate', async (req, res) => {
 
     user.password = undefined;
 
-    const token = jwt.sign({user.id}, authConfig.secret, {
+    const token = jwt.sign({id : user.id}, authConfig.secret, {
         expiresIn:86400
     });
 

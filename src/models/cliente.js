@@ -45,9 +45,15 @@ const ClienteSchema = new mongoose.Schema({
         type:Date,
         default:Date.now,
     },
-
+    score : [{
+        type : String,
+        require:true,
+    }],
     
-});
+},
+
+
+);
 
 ClienteSchema.pre('save', async function(next){
     const hash = await bcrypt.hash(this.password,10);
