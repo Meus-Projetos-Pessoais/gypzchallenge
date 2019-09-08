@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const authConfig = require('../config/auth');
 const axios = require('axios');
 const router = express.Router();
+//const score = require()
 
 router.post('/cadastro', async(req, res) => {
 
@@ -18,6 +19,7 @@ router.post('/cadastro', async(req, res) => {
         //preciso colocar aquyi o score
     
         //git if(user.salario == )
+//const scoreValor =  score
 
         user.password = undefined;
 
