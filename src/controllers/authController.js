@@ -6,6 +6,7 @@ const authConfig = require('../config/auth');
 const axios = require('axios');
 const router = express.Router();
 //const score = require()
+const scoreValor =  require('../score/score');
 
 router.post('/cadastro', async(req, res) => {
 
@@ -19,7 +20,12 @@ router.post('/cadastro', async(req, res) => {
         //preciso colocar aquyi o score
     
         //git if(user.salario == )
-//const scoreValor =  score
+        //const scoreValor =  score
+        const score = scoreValor({user.score: score});
+        
+        store(scoreValor({score: user.score})); 
+        console.log(score);
+
 
         user.password = undefined;
 
@@ -48,6 +54,15 @@ router.post('/authenticate', async (req, res) => {
 
     res.send({user, token});
         
+});
+
+
+router.get('/show', async (req, res) => {
+    
+    
+    const user = cliente.find().toArray((err, results) => {
+        if (err) return console.log(err);
+    })
 });
 
 module.exports = app => app.use('/auth', router);
