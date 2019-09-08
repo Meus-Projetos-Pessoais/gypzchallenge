@@ -7,8 +7,7 @@ const axios = require('axios');
 const router = express.Router();
 const score = require('../score/score');
 
-console.log(score);
-
+//console.log(score);
 
 router.post('/cadastro', async(req, res) => {
 
@@ -20,10 +19,7 @@ router.post('/cadastro', async(req, res) => {
         const user = await cliente.create(req.body);
         
         //preciso colocar aquyi o score
-
-
-
-       
+    
 
 
         user.password = undefined;
