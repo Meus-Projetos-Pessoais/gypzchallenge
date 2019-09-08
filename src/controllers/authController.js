@@ -5,9 +5,9 @@ const jwt = require('jsonwebtoken');
 const authConfig = require('../config/auth');
 const axios = require('axios');
 const router = express.Router();
-const score = require('../score/score');
+const score = require('.././score/score');
 
-//console.log(score);
+console.log(score);
 
 router.post('/cadastro', async(req, res) => {
 
