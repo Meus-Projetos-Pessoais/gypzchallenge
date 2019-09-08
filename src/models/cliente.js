@@ -13,6 +13,16 @@ const ClienteSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
+    salario:
+    {
+            type: Number,
+            require: true,
+    },
+    valorCredito:{
+        type: Number,
+        require: true
+    }
+    ,
     cep:{
         type: String,
         require: true,
