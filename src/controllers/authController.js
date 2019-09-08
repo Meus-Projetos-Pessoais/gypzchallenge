@@ -17,7 +17,7 @@ router.post('/cadastro', async(req, res) => {
         
         //preciso colocar aquyi o score
     
-        
+        //git if(user.salario == )
 
         user.password = undefined;
 
