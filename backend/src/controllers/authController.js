@@ -9,22 +9,16 @@ const router = express.Router();
 router.post('/cadastro', async(req, res) => {
 
     const { cpf } =  req.body;
-
     try{
         if (await cliente.findOne({cpf}))
         return res.status(400).send({err : "Cliente já cadastrado."})
         const user = await cliente.create(req.body);
         
         //preciso colocar aquyi o score
-
-        const score = await axios.get('http://localhost:3000/score');
-        
-       
-
+   
         user.password = undefined;
 
-        return res.send({user,
-            score : user.score
+        return res.send({user
         });
 
         
@@ -34,7 +28,6 @@ router.post('/cadastro', async(req, res) => {
     }
 
 });
-
 router.post('/authenticate', async (req, res) => {
         const { cpf, password } = req.body;
 
@@ -53,6 +46,7 @@ router.post('/authenticate', async (req, res) => {
     res.send({user, token});
         
 });
+
 
 
 

@@ -11,7 +11,8 @@ const uint8arrayToString = function(data){
     return String.fromCharCode.apply(null, data);
 };
 
-app.set('port', process.env.PORT || 3000);
+const port = process.env.PORT || 4000;
+
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended :  false}));
@@ -42,7 +43,7 @@ subprocess.stdout.on('data', (data) => {
 
 });
 
-app.post('/show', (req, res)=>{
+app.get('/show', (req, res)=>{
     
 
     const id = req.params.id;
@@ -53,6 +54,7 @@ app.post('/show', (req, res)=>{
 
 require('./controllers/authController')(app);
 
+//app.listen(port);
 
 
 app.listen(3000);
