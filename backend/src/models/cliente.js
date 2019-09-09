@@ -56,8 +56,9 @@ const ClienteSchema = new mongoose.Schema({
         default:Date.now,
     },
     score : [{
-        type : String,
-        require:true,
+            type:Number,
+            require:true,
+        
     }],
     
 },

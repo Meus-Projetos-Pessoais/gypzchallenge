@@ -5,8 +5,6 @@ const jwt = require('jsonwebtoken');
 const authConfig = require('../config/auth');
 const axios = require('axios');
 const router = express.Router();
-//const score = require()
-const scoreValor =  require('../score/score');
 
 router.post('/cadastro', async(req, res) => {
 
@@ -18,18 +16,18 @@ router.post('/cadastro', async(req, res) => {
         const user = await cliente.create(req.body);
         
         //preciso colocar aquyi o score
-    
-        //git if(user.salario == )
-        //const scoreValor =  score
-        const score = scoreValor({user.score: score});
-        
-        store(scoreValor({score: user.score})); 
-        console.log(score);
 
+        const score = await axios.get('http://localhost:3000/score');
+        
+       
 
         user.password = undefined;
 
-        return res.send({user});
+        return res.send({user,
+            score : user.score
+        });
+
+        
     }
     catch(err) {
         return res.status(400).send({error : 'Falha no registro'});
@@ -57,12 +55,6 @@ router.post('/authenticate', async (req, res) => {
 });
 
 
-router.get('/show', async (req, res) => {
-    
-    
-    const user = cliente.find().toArray((err, results) => {
-        if (err) return console.log(err);
-    })
-});
+
 
 module.exports = app => app.use('/auth', router);

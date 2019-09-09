@@ -12,7 +12,9 @@ def main():
     #dateDaConsulta = str(datetime.datetime.now())
     dateDaConsulta =  str(date.today())
     
-    print(json.dumps({'score': score, 'data': dateDaConsulta}))
+    print(json.dumps({'scoreCliente': score, 'dataRequisicao': dateDaConsulta}))
+    #print(json.dumps(score))
+	
 
 #start process
 if __name__ == '__main__':

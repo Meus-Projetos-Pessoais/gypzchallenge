@@ -42,15 +42,13 @@ subprocess.stdout.on('data', (data) => {
 
 });
 
-app.get('/show', (req, res)=>{
+app.post('/show', (req, res)=>{
     
 
     const id = req.params.id;
     const ObjectId = require('mongoose').ObjectID;
 
 });
-
-
 
 
 require('./controllers/authController')(app);
