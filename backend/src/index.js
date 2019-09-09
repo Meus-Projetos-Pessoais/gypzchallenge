@@ -23,7 +23,7 @@ app.get("/", function(req, res) {
 
 
 //https://www.tutorialspoint.com/run-python-script-from-node-js-using-child-process-spawn-method
-app.get('/score', (req,res) =>{
+app.post('/score', (req,res) =>{
     
     const path = require('path')
     const {spawn} = require('child_process')

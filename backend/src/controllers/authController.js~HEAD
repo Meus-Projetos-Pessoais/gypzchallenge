@@ -15,7 +15,13 @@ router.post('/cadastro', async(req, res) => {
         const user = await cliente.create(req.body);
         
         //preciso colocar aquyi o score
+<<<<<<< HEAD:backend/src/controllers/authController.js
    
+=======
+    
+        //git if(user.salario == )
+
+>>>>>>> parent of c94a7f4... Criando a rota:src/controllers/authController.js
         user.password = undefined;
 
         return res.send({user
@@ -28,7 +34,6 @@ router.post('/cadastro', async(req, res) => {
     }
 
 });
-
 router.post('/authenticate', async (req, res) => {
         const { cpf, password } = req.body;
 
