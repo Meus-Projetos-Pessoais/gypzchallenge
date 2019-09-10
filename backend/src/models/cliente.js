@@ -1,4 +1,4 @@
-const mongoose = require('../database');
+const mongoose = require('../database/index');
 const bcrypt = require('bcryptjs');
 
 
@@ -56,11 +56,8 @@ const ClienteSchema = new mongoose.Schema({
         default:Date.now,
     },
     score:[
-        {
-            type:String,
-            require: true,
-        }
-    ]
+               
+    ],
 
     
 },
@@ -68,12 +65,7 @@ const ClienteSchema = new mongoose.Schema({
 
 );
 
-ClienteSchema.pre('save', async function(next){
-    const hash = await bcrypt.hash(this.password,10);
-    this.password =  hash;
-
-    next();
-});
+ClienteSchema.pre('save', async function(next){const hash = await bcrypt.hash(this.password,10); this.password =  hash; next();});
 
 const Cliente =  mongoose.model('Cliente', ClienteSchema);
 

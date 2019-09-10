@@ -5,6 +5,10 @@ const jwt = require('jsonwebtoken');
 const authConfig = require('../config/auth');
 const axios = require('axios');
 const router = express.Router();
+const moment = require('moment');
+
+const agora = moment().format('L');
+console.log(agora);
 
 router.post('/cadastro', async(req, res) => {
 
@@ -12,10 +16,16 @@ router.post('/cadastro', async(req, res) => {
     try{
         if (await cliente.findOne({cpf}))
         return res.status(400).send({err : "Cliente já cadastrado."})
-        const user = await cliente.create(req.body);
+        const number = Math.floor(Math.random() * 999 + 1);
+        const user = await cliente.create({...req.body, score: {
+            scoreCliente: number,
+            dataRequisicao:agora,
+        }});
         
+
         //preciso colocar aquyi o score
    
+
         user.password = undefined;
 
         return res.send({user
